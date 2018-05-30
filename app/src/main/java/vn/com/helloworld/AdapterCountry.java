@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by Lrandom on 5/26/18.
@@ -34,15 +31,26 @@ public class AdapterCountry extends ArrayAdapter<ModelCountry> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        ViewHolder viewHolder;
         if(convertView==null){
             LayoutInflater inflater = LayoutInflater.from(this.context);
             convertView=inflater.inflate(this.resources,null);
+            viewHolder= new ViewHolder();
+            viewHolder.tvName =convertView.findViewById(R.id.tvName);
+            viewHolder.tvPopulation=convertView.findViewById(R.id.tvPopulation);
+            convertView.setTag(viewHolder);
         }
-        TextView tvName= (TextView)convertView.findViewById(R.id.tvName);
-        TextView tvPopulation=(TextView)convertView.findViewById(R.id.tvPopulation);
+        else{
+            viewHolder=(ViewHolder) convertView.getTag();
+        }
         ModelCountry model = getItem(position);
-        tvName.setText(model.getName());
-        tvPopulation.setText(model.getPopulation());
+        viewHolder.tvName.setText(model.getName());
+        viewHolder.tvPopulation.setText(model.getPopulation());
         return convertView;
+    }
+
+    class ViewHolder{
+        TextView tvName ;
+        TextView tvPopulation;
     }
 }

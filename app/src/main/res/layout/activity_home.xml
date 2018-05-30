@@ -6,12 +6,23 @@
     android:padding="10dp"
     >
 
-<Button
-
+    <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="demo listview"
-    android:onClick="goToDemoListView"
-    />
+    android:onClick="goToDemoListView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="demo gridview"
+        android:onClick="goToDemoGridView"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="demo recycleview"
+        android:onClick="goToDemoRecycleView"
+        />
 
 </LinearLayout>
