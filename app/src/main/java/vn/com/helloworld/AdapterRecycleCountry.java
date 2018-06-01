@@ -25,6 +25,10 @@ public class AdapterRecycleCountry extends RecyclerView.Adapter<AdapterRecycleCo
         this.resources=resources;
     }
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener=onItemClickListener;
+    }
+
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater= LayoutInflater.from(context);
@@ -43,31 +47,28 @@ public class AdapterRecycleCountry extends RecyclerView.Adapter<AdapterRecycleCo
         return this.countries.size();
     }
 
-    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
-        this.onItemClickListener=mItemClickListener;
-    }
-
-    class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class RecyclerViewHolder extends RecyclerView.ViewHolder{
         TextView tvName;
         TextView tvPopulation;
 
 
-        public RecyclerViewHolder(View itemView) {
+        public RecyclerViewHolder(final View itemView) {
             super(itemView);
             tvName=(TextView)itemView.findViewById(R.id.tvName);
             tvPopulation=(TextView)itemView.findViewById(R.id.tvPopulation);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if(onItemClickListener!=null){
-                onItemClickListener.OnItemClick(view,getAdapterPosition());
-            }
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(onItemClickListener!=null){
+                        onItemClickListener.onItemClick(view,getAdapterPosition());
+                    }
+                }
+            });
         }
     }
 
-    public interface OnItemClickListener{
-        public void OnItemClick(View v, int position);
+    interface OnItemClickListener{
+        public void onItemClick(View v, int position);
     }
+
 }

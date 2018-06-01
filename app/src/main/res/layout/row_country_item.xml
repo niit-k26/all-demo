@@ -17,6 +17,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginLeft="10dp"
+        android:layout_weight="1"
         >
 
         <TextView
@@ -32,8 +33,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="90mil"
-            android:textSize="14dp"
-            />
+            android:textSize="14dp"/>
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_name"
+        android:background="@null"/>
 
 </LinearLayout>

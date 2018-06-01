@@ -18,5 +18,6 @@
         <activity android:name=".ActivityDemoListView"></activity>
         <activity android:name=".ActivityDemoGridView"></activity>
         <activity android:name=".ActivityDemoRecycleView"></activity>
+        <activity android:name=".ActivityFragmentDemo"></activity>
     </application>
 </manifest>

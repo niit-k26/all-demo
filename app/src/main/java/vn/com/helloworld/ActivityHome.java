@@ -37,6 +37,11 @@ public class ActivityHome extends Activity {
         startActivity(intent);
     }
 
+    public void goToDemoFragment(View v){
+        Intent intent = new Intent(ActivityHome.this,ActivityFragmentDemo.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
